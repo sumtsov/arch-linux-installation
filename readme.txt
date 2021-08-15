@@ -7,11 +7,9 @@ https://www.youtube.com/watch?v=_3-OMUQTf_k&t=734s (up to 3:20)
 https://www.youtube.com/watch?v=a00wbjy2vns // full installation walkthrough
 https://www.youtube.com/watch?v=KN7bBcfIhJk&list=PLlloYVGq5pS6VC6mT9yj7d4lwoYqyt4SL // arch installation playlist
 https://www.youtube.com/watch?v=fV17DgsQcsY
+https://www.youtube.com/watch?v=wwSkFi3h2nI // arch maintenance 
 
-Arch maintenance:
-https://www.youtube.com/watch?v=wwSkFi3h2nI
-
-1) prepare ISO (get from yandex mirror)
+1) Prepare ISO (get from yandex mirror)
 2) Arch Linux installation:
     2.1) Connect to the Network
         # ip addr show // will show ip if wired connected (inet)
@@ -296,39 +294,39 @@ https://www.youtube.com/watch?v=wwSkFi3h2nI
     
     - Customize user startup settings using .bash_profile (bash reads .bash_profile, .bash_login, .profile)
 
-    [[ -f ~/.bashrc ]] && . ~/.bashrc
+        [[ -f ~/.bashrc ]] && . ~/.bashrc
 
-    # startx after login in tty1
-    if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-        startx
-    fi
+        # startx after login in tty1
+        if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+            startx
+        fi
 
-    export EDITOR="vim"
-    export TERMINAL="urxvt"
-    export BROWSER="google-chrome-stable"
+        export EDITOR="vim"
+        export TERMINAL="urxvt"
+        export BROWSER="google-chrome-stable"
 
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-    export PATH=$PATH:$JAVA_HOME/bin
+        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export PATH=$PATH:$JAVA_HOME/bin
 
-    export M2_HOME=/opt/apache-maven-3.6.3
-    export PATH=$PATH:$M2_HOME/bin
+        export M2_HOME=/opt/apache-maven-3.6.3
+        export PATH=$PATH:$M2_HOME/bin
 
     - Customize user startup settings using .zprofile (zsh reads .zprofile, .profile)
 
-    # startx after login in tty1
-    if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
-        startx
-    fi
+        # startx after login in tty1
+        if [[ -z $DISPLAY ]] && [[ $(tty) = /dev/tty1 ]]; then
+            startx
+        fi
 
 
     - Export variables in .zshenv:
-    https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
+        https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout
 
-    export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
-    export PATH=$PATH:$JAVA_HOME/bin
+        export JAVA_HOME=/usr/lib/jvm/java-11-openjdk
+        export PATH=$PATH:$JAVA_HOME/bin
 
-    export M2_HOME=/opt/apache-maven-3.6.3
-    export PATH=$PATH:$M2_HOME/bin
+        export M2_HOME=/opt/apache-maven-3.6.3
+        export PATH=$PATH:$M2_HOME/bin
 
 2.11) Skip grub menu: https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks
 
@@ -515,6 +513,7 @@ https://www.youtube.com/watch?v=wwSkFi3h2nI
     -use vpn-extension for Chrome (Touch VPN)
 
 10) Install docker
+
     sudo pacman -S docker
     sudo pacman -S docker-compose
 
@@ -530,6 +529,7 @@ https://www.youtube.com/watch?v=wwSkFi3h2nI
     sudo systemctl enable containerd.service
 
 11) Working with USB:
+
     lsblk // find your usb-stick
     sudo mkdir /mnt/usbstick // if not created
     sudo mount /dev/sdb1 /mnt/usbstick
@@ -539,47 +539,47 @@ https://www.youtube.com/watch?v=wwSkFi3h2nI
 
 12) Git basics:
 
-git init
-git add . 
-git commit -m "init commit"
-git remote add origin https://...
-git push origin master
+    git init
+    git add . 
+    git commit -m "init commit"
+    git remote add origin https://...
+    git push origin master
 
-git remote -v // view remotes
-git remote set-url origin https://github.com/sumtsov/book-library-service.git
+    git remote -v // view remotes
+    git remote set-url origin https://github.com/sumtsov/book-library-service.git
 
 13) Working with torrents
 
-Transmision:
-$ yay -S transmission-gtk
+    Transmision:
+    $ yay -S transmission-gtk
 
-aria2:
-https://aria2.github.io/
-https://wiki.archlinux.org/title/aria2
-https://www.addictivetips.com/ubuntu-linux-tips/download-torrents-from-the-command-line-linux/
+    aria2:
+    https://aria2.github.io/
+    https://wiki.archlinux.org/title/aria2
+    https://www.addictivetips.com/ubuntu-linux-tips/download-torrents-from-the-command-line-linux/
 
-$ sudo pacman -S aria2
-$ aria2c --dir [download-location] [torrent-file-location]
+    $ sudo pacman -S aria2
+    $ aria2c --dir [download-location] [torrent-file-location]
 
-sudo find . -name "name"
-sudo find . -name "name" -delete
+    $ sudo find . -name "name"
+    $ sudo find . -name "name" -delete
 
 14) Tomcat installation:
 
-download .tar.gz from Binary Distributions - Core 
-https://tomcat.apache.org/download-90.cgi
+    download .tar.gz from Binary Distributions - Core 
+    https://tomcat.apache.org/download-90.cgi
 
-create folder:
-/opt/apache-tomcat-{version}
+    create folder:
+    /opt/apache-tomcat-{version}
 
-unpack archive:
-sudo tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
+    unpack archive:
+    sudo tar xzvf apache-tomcat-*tar.gz -C /opt/tomcat --strip-components=1
 
-chmod 755 -R {your-tomcat-dir} // lets Intellij IDEA manage your Tomcat Server
+    chmod 755 -R {your-tomcat-dir} // lets Intellij IDEA manage your Tomcat Server
 
-Create Tomcat startup configuration in IDEA:
-- File -> Settings -> Application Servers -> + (add your Tomcat directory)
-- Edit configurations -> + -> Tomcat Server -> Local -> Deployment -> + -> *:war exploded
+    Create Tomcat startup configuration in IDEA:
+    - File -> Settings -> Application Servers -> + (add your Tomcat directory)
+    - Edit configurations -> + -> Tomcat Server -> Local -> Deployment -> + -> *:war exploded
 
-add Web Descriptor in Intellij:
-- Project Settings -> Facets -> + -> Web -> {select module for web descriptor adding} -> {add/remove Web Module Deployment Descriptor/Web Resource Directory}
+    add Web Descriptor in Intellij:
+    - Project Settings -> Facets -> + -> Web -> {select module for web descriptor adding} -> {add/remove Web Module Deployment Descriptor/Web Resource Directory}
