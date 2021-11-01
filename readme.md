@@ -1,15 +1,3 @@
-Useful links:
-
-https://wiki.archlinux.org/index.php/installation_guide
-https://wiki.archlinux.org/index.php/VirtualBox/Install_Arch_Linux_as_a_guest#Install_the_Guest_Additions
-https://zalinux.ru/?p=1860
-https://www.youtube.com/watch?v=_3-OMUQTf_k&t=734s (up to 3:20)
-https://www.youtube.com/watch?v=a00wbjy2vns // full installation walkthrough
-https://www.youtube.com/watch?v=KN7bBcfIhJk&list=PLlloYVGq5pS6VC6mT9yj7d4lwoYqyt4SL // arch installation playlist
-https://www.youtube.com/watch?v=fV17DgsQcsY
-https://www.youtube.com/watch?v=wwSkFi3h2nI // arch maintenance 
-https://wiki.archlinux.org/title/XDG_user_directories 
-
 # Arch Linux Installation and Configuration Guide
 
 ## 1) Pre Installation
@@ -435,6 +423,18 @@ Check if kernel loaded driver for wireless card:\
 `# lspci -k`
     
 If all checks passed, connect to wi-fi with network-manager-applet or use nmcli in a command-line
+
+### Useful links:
+
+https://wiki.archlinux.org/index.php/installation_guide\
+https://wiki.archlinux.org/index.php/VirtualBox/Install_Arch_Linux_as_a_guest#Install_the_Guest_Additions\
+https://zalinux.ru/?p=1860\
+https://www.youtube.com/watch?v=_3-OMUQTf_k&t=734s - up to 3:20\
+https://www.youtube.com/watch?v=a00wbjy2vns - full installation walkthrough\
+https://www.youtube.com/watch?v=KN7bBcfIhJk&list=PLlloYVGq5pS6VC6mT9yj7d4lwoYqyt4SL - arch installation playlist\
+https://www.youtube.com/watch?v=fV17DgsQcsY\
+https://www.youtube.com/watch?v=wwSkFi3h2nI - arch maintenance\
+https://wiki.archlinux.org/title/XDG_user_directories 
 
 
 
