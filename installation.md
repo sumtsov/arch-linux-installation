@@ -1,24 +1,51 @@
 # Arch Linux Installation and Configuration Guide
 
-## 1) Pre Installation
-### 1.1) Prepare ISO
+## Table of Contents
+1) [Pre Installation](#pre-installation)\
+    1.1) [Prepare ISO](#prepare-iso)\
+    1.2) [Connect to the Network](#connect-to-the-network)\
+    1.3) [Select Mirror](#select-mirror)\
+    1.4) [Check package databases](#check-package-databases)\
+    1.5) [Create disk partitions](#create-disk-partitions)\
+    1.6) [Format partitions](#format-partitions)
+2) [Installation](#installation)\
+    2.1) [Configure locale settings](#configure-locale-settings)\
+    2.2) [Set Up users](#set-up-users)\
+    2.3) [Set Up GRUB](#set-up-grub)\
+    2.4) [Create a swapfile](#create-a-swapfile)\
+    2.5) [Additional packages](#additional-packages)\
+    2.6) [Finish installation](#finish-installation)
+3) [Configuration](#configuration)\
+    3.1) [Install](#install)\
+    3.2) [Set Up fonts](#set-up-fonts)\
+    3.3) [Set Up terminal](#set-up-terminal)   
+    3.4) [Set Up bash](#set-up-bash)\
+    3.5) [Set Up zsh](#set-up-zsh)\
+    3.6) [Customize user startup settings](#customize-user-startup-settings)\
+    3.7) [Rename user directories](#rename-user-directories)\
+    3.8) [Set Up Wi-Fi connection](#set-up-wi-fi-connection)
+4) [System backup](#system-backup)
+5) [Useful links](#useful-links) 
+
+## 1) Pre Installation <a name="pre-installation"></a>
+### 1.1) Prepare ISO <a name="prepare-iso"></a>
 [Download the image](https://mirror.yandex.ru/archlinux/iso/)
 
-### 1.2) Connect to the Network
+### 1.2) Connect to the Network <a name="connect-to-the-network"></a>
 The following command will show ip if you have a wired internet conection:\
 `# ip addr show`\
-If you need a wifi-connection, use [iwd(iwctl utility)](https://wiki.archlinux.org/title/Iwd#iwctl)\
+If you need a wifi-connection, use [iwd (iwctl utility)](https://wiki.archlinux.org/title/Iwd#iwctl)\
 Check the internet connection:\
 `# ping www.google.com`
 
-### 1.3) Select Mirror
+### 1.3) Select Mirror <a name="select-mirror"></a>
 Take a look at mirrorlist file. The higher a mirror is placed in the list, the more priority it is given when downloading a package. If you have problems with mirrors and download speed is poor (also recommended to do it after installation), go to archlinux.org/mirrorlist/, select your country, select 'mirror status' checkbox and generate new mirrorlist. Then paste generated list to the mirrorlist file:\
 `# nano /etc/pacman.d/mirrorlist`
 
-### 1.4) Check package databases
+### 1.4) Check package databases <a name="check-package-databases"></a>
 `# packman -Syyy`
 
-### 1.5) Create disk partitions
+### 1.5) Create disk partitions <a name="create-disk-partitions"></a>
 The following command shows all disks. `fdisk -l` is the same as `lsblk`. Find the disk you want to work with:\
 `# fdisk -l`
 `# fdisk /dev/[your disk]`
@@ -54,7 +81,7 @@ Last sector - default enter; takes the remainder of hard disk
 
 Enter 'w' to write and finalize all the changes
 
-### 1.6) Format partitions
+### 1.6) Format partitions <a name="format-partitions"></a>
 
 **Format EFI partition:**\
 `# mkfs.fat -F32 /dev/xxx1`
@@ -85,7 +112,7 @@ fstab file - in UNIX systems describes how disk works
 Check fstab file if all mounted correctly:\ 
 `# cat /mnt/etc/fstab`
 
-## 2) Installation
+## 2) Installation <a name="installation"></a>
 
 Install essential packages:\
 `# pacstrap -i /mnt base linux-firmware`
@@ -115,7 +142,7 @@ Enable networkmanager:\
 Generate initial RAM disk for the linux kernel (initramfs):\
 `# mkinitcpio -p linux-lts`
 
-### 2.1) Configure locale settings
+### 2.1) Configure locale settings <a name="configure-locale-settings"></a>
 
 Find your locale and uncomment it (en_US.UTF-8):\
 `# nano /etc/locale.gen`\
@@ -124,7 +151,7 @@ Find your locale and uncomment it (en_US.UTF-8):\
 `# timedatectl list-timezones`\
 `# timedatectl set-timezone Zone/SubZone`
 
-### 2.2) Set Up users
+### 2.2) Set Up users <a name="set-up-users"></a>
 
 Create password for root user:\
 `# passwd`
@@ -140,7 +167,7 @@ Get access to sudo command, if not installed - pacman -S sudo:\
 
 To give sudo acces to the user: `# nano /etc/sudoers` - uncomment `%wheel ALL = (ALL) ALL`
 
-### 2.3) Set Up GRUB
+### 2.3) Set Up GRUB <a name="set-up-grub"></a>
 
 `# pacman -S grub efibootmgr dosfstools os-prober mtools`\
 `# mkdir /boot/EFI // create directory for EFI`\
@@ -155,7 +182,7 @@ To hide grub menu at startup:\
 `# GRUB_TIMEOUT=0`\
 `# grub-mkconfig -o /boot/grub/grub.cfg`
 
-### 2.4) Create a swapfile
+### 2.4) Create a swapfile <a name="create-a-swapfile"></a>
 
 `# fallocate -l 8G /swapfile`\ 
 `# chmod 600 /swapfile`\
@@ -166,7 +193,7 @@ To hide grub menu at startup:\
 Check fstab if swapfile was created properly:
 `# cat /etc/fstab`
 
-### 2.5) Additional packages
+### 2.5) Additional packages <a name="additional-packages"></a>
 
 `# pacman -S intel-ucode`\
 `# pacman -S xorg-server xorg-xinit`\
@@ -175,19 +202,19 @@ Drivers for video-card, don't install on virtualbox installation:\
 Only for virtualbox installation:\
 `# pacman -S virtualbox-guest-utils xf86-video-vmware mesalinux installation`
 
-### 2.6) Finish installation
+### 2.6) Finish installation <a name="finish-installation"></a>
         
 `# exit`
 `# unmount -a`
 `# reboot`
 
-## 3) Configuration
+## 3) Configuration <a name="configuration"></a>
 
-### 3.1) Install [vim](https://guides.hexlet.io/vim/) (neovim)
+### 3.1) Install [vim](https://guides.hexlet.io/vim/) (neovim) <a name="install-vim"></a>
 
 `# pacman -S neovim`
 
-### 3.2) Set Up fonts
+### 3.2) Set Up fonts <a name="set-up-fonts"></a>
 
 Font configuration:\
 https://wiki.archlinux.org/index.php/Font_configuration_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)\
@@ -213,7 +240,7 @@ Install fonts:\
 `# pacman -S ttf-dejavu`\ 
 `# pacman -S noto-fonts-emoji`
 
-### 3.3) Set Up terminal
+### 3.3) Set Up terminal <a name="set-up-terminal"></a>
 
 Install urxvt or rxvt-unicode-256xresources:\
 `# pacman -S rxvt-unicode`
@@ -273,7 +300,7 @@ Create ~/.Xresources file with the following content:\
 Add the following line to .xinitrc (it must be the first line):\
 `[[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources`
 
-### 3.4) Set Up bash
+### 3.4) Set Up bash <a name="set-up-bash"></a>
 
 To customize colors for user, host and directory info in bash, add the following code to .bashrc:\
 
@@ -298,7 +325,7 @@ To change cursor to blinking bar, add to .bashrc:\
 [Prompt customization#2](https://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html)\
 [.bashrc generator](http://bashrcgenerator.com/)
 
-### 3.5) Set Up zsh
+### 3.5) Set Up zsh <a name="set-up-zsh"></a>
 
 Install zsh:\
 `# pacman -S zsh zsh-completions`\
@@ -337,7 +364,7 @@ Custom zsh theme:\
     ZSH_THEME_GIT_PROMPT_PREFIX=" ("
     ZSH_THEME_GIT_PROMPT_SUFFIX=")"
 
-### 3.6) Customize user startup settings
+### 3.6) Customize user startup settings <a name="customize-user-startup-settings"></a>
 
 [Skip GRUB menu](https://wiki.archlinux.org/index.php/GRUB/Tips_and_tricks)
 
@@ -377,7 +404,7 @@ and to .zshenv:\
 
 [What should/shouldn't go in .zshenv, .zshrc, .zlogin, .zprofile, .zlogout](https://unix.stackexchange.com/questions/71253/what-should-shouldnt-go-in-zshenv-zshrc-zlogin-zprofile-zlogout)   
 
-### 3.7) Rename user directories
+### 3.7) Rename user directories <a name="rename-user-directories"></a>
 
 Download xdg user directories:\
 `# sudo pacman -S xdg-user-dirs`\
@@ -408,7 +435,7 @@ In user-dirs.dirs file set created names of standard diretories:
 https://www.youtube.com/watch?v=tnspdGZGEPE\
 https://wiki.archlinux.org/title/XDG_user_directories 
 
-### 3.8) Set Up Wi-Fi connection
+### 3.8) Set Up Wi-Fi connection <a name="set-up-wi-fi-connection"></a>
 
 https://wiki.archlinux.org/index.php/Network_configuration_
 
@@ -424,7 +451,7 @@ Check if kernel loaded driver for wireless card:\
     
 If all checks passed, connect to wi-fi with network-manager-applet or use nmcli in a command-line
 
-### 4) System backup
+### 4) System backup <a name="system-backup"></a>
 
 Backup home using tar:\
 `# sudo tar -zcvpf mnt/usbstick/backup/dmitry-backup-$(date +%d-%m-%Y).tar.gz /home/[USERNAME]`
@@ -436,7 +463,7 @@ https://www.youtube.com/watch?v=G2gbun8LEC4\
 https://wiki.archlinux.org/index.php/Rsync\
 https://ostechnix.com/backup-entire-linux-system-using-rsync/
 
-### Useful links:
+### 5) Useful links <a name="useful-links"></a>
 
 https://wiki.archlinux.org/index.php/installation_guide\
 https://wiki.archlinux.org/index.php/VirtualBox/Install_Arch_Linux_as_a_guest#Install_the_Guest_Additions\
