@@ -424,6 +424,18 @@ Check if kernel loaded driver for wireless card:\
     
 If all checks passed, connect to wi-fi with network-manager-applet or use nmcli in a command-line
 
+### 4) System backup
+
+Backup home using tar:\
+`# sudo tar -zcvpf mnt/usbstick/backup/dmitry-backup-$(date +%d-%m-%Y).tar.gz /home/[USERNAME]`
+Restore home using tar:\
+`# sudo tar -xvpzf /path/to/backup.tar.gz -C /home/dmitry --numeric-owner`
+
+Using rsync:\
+https://www.youtube.com/watch?v=G2gbun8LEC4\
+https://wiki.archlinux.org/index.php/Rsync\
+https://ostechnix.com/backup-entire-linux-system-using-rsync/
+
 ### Useful links:
 
 https://wiki.archlinux.org/index.php/installation_guide\
