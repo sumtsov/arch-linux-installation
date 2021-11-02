@@ -50,34 +50,34 @@ The following command shows all disks. `fdisk -l` is the same as `lsblk`. Find t
 `# fdisk -l`
 `# fdisk /dev/[your disk]`
 
-Create new partition table\
-Enter 'g' for GPT\
-Enter 'p' to preview changes
+**Create new partition table:**\
+- Enter 'g' for GPT\
+- Enter 'p' to preview changes
 
 **Create Partition for EFI:**\
-Enter 'n' for new partition\
-Partition number - default 1 enter\
-First sector - default enter\
-Last sector - '+xxxM' (300-500M recommended)\
-Remove the signature - Yes
+- Enter 'n' for new partition\
+- Partition number - default 1 enter\
+- First sector - default enter\
+- Last sector - '+xxxM' (300-500M recommended)\
+- Remove the signature - Yes
 
 Deside if use SWAP partition or SWAP file (for swap partition 100+50% of RAM size; 16+8)\
 With swapfile, you can safely resize it by deleting and creating new swapfile
 
 **Create Partition for root:**\
-Enter 'n' for new partition\
-Partition number - default 2 enter\
-First sector - default enter\
-Last sector - '+xxxM' (60-100G recommended)
+- Enter 'n' for new partition\
+- Partition number - default 2 enter\
+- First sector - default enter\
+- Last sector - '+xxxM' (60-100G recommended)
 
 **Create Partition for home:**\
 Separate partition for home is needed to save /home data during arch-linux re-installation;\
 Choose not to format home partition during re-installation
 
-Enter 'n' for new partition\
-Partition number - default 3 enter\
-First sector - default enter\
-Last sector - default enter; takes the remainder of hard disk
+- Enter 'n' for new partition\
+- Partition number - default 3 enter\
+- First sector - default enter\
+- Last sector - default enter; takes the remainder of hard disk
 
 Enter 'w' to write and finalize all the changes
 
@@ -332,11 +332,11 @@ Install zsh:\
 Start initial zsh setup:\
 `# zsh`
 
-Check 1: defaults,\
-Check 2: choose 1,\ 
-Check 3: choose vi,\
-Check 4: defaults),\
-Hit 0 to save
+- Check 1: defaults
+- Check 2: choose 1 
+- Check 3: choose vi
+- Check 4: defaults
+- Hit 0 to save
 
 To udgrage zsh:
 `# upgrade_oh_my_zsh`
