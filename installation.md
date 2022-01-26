@@ -174,7 +174,7 @@ To give sudo acces to the user: `# nano /etc/sudoers` - uncomment `%wheel ALL = 
 `# mkdir /boot/EFI // create directory for EFI`\
 `# mount /dev/xxx1 /boot/EFI // mount EFI partition`\
 `# grub-install --target=x86_64-efi --bootloader-id=grub_uefi --recheck`\
-`# mkdir /boot/grub/locale`\ 
+`# mkdir /boot/grub/locale`\
 `# cp /usr/share/locale/en\@quot/LC_MESSAGES/grub.mo /boot/grub/locale/en.mo`\
 `# grub-mkconfig -o /boot/grub/grub.cfg`
 
@@ -185,7 +185,7 @@ To hide grub menu at startup:\
 
 ### 2.4. Create a swapfile <a name="create-a-swapfile"></a>
 
-`# fallocate -l 8G /swapfile`\ 
+`# fallocate -l 8G /swapfile`\
 `# chmod 600 /swapfile`\
 `# mkswap /swapfile`\
 `# cp /etc/fstab /etc/fstab.bak`\
@@ -205,8 +205,8 @@ Only for virtualbox installation:\
 
 ### 2.6. Finish installation <a name="finish-installation"></a>
         
-`# exit`
-`# unmount -a`
+`# exit`\
+`# unmount -a`\
 `# reboot`
 
 ## 3. Configuration <a name="configuration"></a>
@@ -238,8 +238,9 @@ Install fontconfig:\
 Show all fonts in system:\
 `# fc-list`\
 Install fonts:\
-`# pacman -S ttf-dejavu`\ 
-`# pacman -S noto-fonts-emoji`
+`# pacman -S ttf-dejavu`\
+`# pacman -S noto-fonts-emoji`\
+`# pacman -S ttf-symbola` - Symbola font allows to display emoji in urxvt
 
 ### 3.3. Set Up terminal <a name="set-up-terminal"></a>
 
@@ -261,7 +262,7 @@ Create ~/.Xresources file with the following content:
     URxvt*background:             Black
     URxvt*foreground:             White
 
-    URxvt.font:                   xft:DejaVu Sans Mono:size=12
+    URxvt.font:                   xft:DejaVu Sans Mono:size=12, xft:Symbola
     URxvt.antialias:              true
 
     URxvt.scrollBar:              false
